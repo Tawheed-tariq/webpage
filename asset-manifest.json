@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/webpage/static/css/main.b337cbd3.css",
+    "main.js": "/webpage/static/js/main.7d008a3f.js",
+    "static/media/remote_sensing.jpg": "/webpage/static/media/remote_sensing.3861d15b82d818d936aa.jpg",
+    "static/media/person_centric.jpg": "/webpage/static/media/person_centric.d957a5e2c208ef6354d7.jpg",
+    "static/media/med_image.jpg": "/webpage/static/media/med_image.8db27a5e6a8fe363cad7.jpg",
+    "static/media/synthesis.jpg": "/webpage/static/media/synthesis.64f75ae377ab11fd2aab.jpg",
+    "static/media/multi_modal.jpg": "/webpage/static/media/multi_modal.2e9ee55f1113f831f6ef.jpg",
+    "static/media/banner-publications.avif": "/webpage/static/media/banner-publications.248b16ca837d168a28d1.avif",
+    "static/media/banner-contact.avif": "/webpage/static/media/banner-contact.a2864657da4063be21aa.avif",
+    "static/media/banner-news.avif": "/webpage/static/media/banner-news.b91b890167ee90a7666d.avif",
+    "static/media/Logo.png": "/webpage/static/media/Logo.510cbf65b006caf261e7.png",
+    "static/media/banner-about.avif": "/webpage/static/media/banner-about.5021b1610b81ce15622f.avif",
+    "static/media/banner-research.avif": "/webpage/static/media/banner-research.73bc3200cfea20529170.avif",
+    "index.html": "/webpage/index.html",
+    "main.b337cbd3.css.map": "/webpage/static/css/main.b337cbd3.css.map",
+    "main.7d008a3f.js.map": "/webpage/static/js/main.7d008a3f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b337cbd3.css",
+    "static/js/main.7d008a3f.js"
+  ]
+}
