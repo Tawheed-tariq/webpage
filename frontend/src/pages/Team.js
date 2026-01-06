@@ -7,7 +7,7 @@ import githubIcon from '@iconify-icons/logos/github-icon';
 import globeIcon from '@iconify-icons/fa-solid/globe';
 import { SiGooglescholar } from "react-icons/si";
 import noimage from '../assets/noimage.png';
-import axios from '../api/axios';
+import { AllRoutes } from '../api/routes';
 
 
 const ProfileCard = ({ name, designation,university, email, website, scholar, image, type, linkedin, github }) => {
@@ -118,12 +118,13 @@ const Team = () => {
     useEffect(() => {
         const fetchTeamData = async () => {
             try {
-                const response = await axios.get('/team'); 
-                console.log('Team data fetched:', response.data);
-                if (response.data && Array.isArray(response.data)) {
-                    setTeam(response.data);
-                } else {
-                    console.error('Invalid team data format:', response.data);
+                const response = await AllRoutes.fetchTeamData(); 
+                if(response.success){
+                    if (response.data && Array.isArray(response.data)) {
+                        setTeam(response.data);
+                    } else {
+                        console.error('Invalid team data format:', response.data);
+                    }
                 }
             } catch (error) {
                 console.error('Error fetching team data:', error);

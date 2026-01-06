@@ -3,7 +3,7 @@ import { ChevronRight, CalendarDays } from "lucide-react";
 import banner_news from './../assets/banner-news.avif';
 import ScrollToTop from '../components/ScrollToTop';
 import { Link } from "react-router-dom";
-import axios from '../api/axios';
+import {AllRoutes} from "../api/routes";
 
 
 const NewsPage = () => {
@@ -16,23 +16,24 @@ const NewsPage = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await axios.get('news/');
-                const groupedNews = response.data.reduce((acc, item) => {
-                    const year = item.year;
-                    if (!acc[year]) {
-                        acc[year] = [];
-                    }
-                    acc[year].push({
-                        date: item.date,
-                        text: item.text,
-                        link: item.link,
-                        recent: item.recent
-                    });
-                    return acc;
-                }, {});
-                console.log(groupedNews);
-                setNews(groupedNews);
-                setActiveYear(Object.keys(groupedNews).sort((a, b) => b - a)[0]);
+                const response = await AllRoutes.fetchNews();
+                if(response.success){
+                    const groupedNews = response.data.reduce((acc, item) => {
+                        const year = item.year;
+                        if (!acc[year]) {
+                            acc[year] = [];
+                        }
+                        acc[year].push({
+                            date: item.date,
+                            text: item.text,
+                            link: item.link,
+                            recent: item.recent
+                        });
+                        return acc;
+                    }, {});
+                    setNews(groupedNews);
+                    setActiveYear(Object.keys(groupedNews).sort((a, b) => b - a)[0]);
+                }
             } catch (error) {
                 console.error("Error fetching news:", error);
             }
@@ -88,7 +89,7 @@ const NewsPage = () => {
                 </div>
 
                 <div className="space-y-6">
-                    {news && news[activeYear].map((newsItem, index) => (
+                    {news?.[activeYear]?.map((newsItem, index) => (
                         <div
                             key={index}
                             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow group"

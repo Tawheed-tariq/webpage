@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import banner_publications from './../assets/banner-publications.avif'
 import ScrollToTop from '../components/ScrollToTop';
 import PublicationCard from "../components/PublicationCard";
-import axios from '../api/axios';
+import { AllRoutes } from '../api/routes';
 
 
 const Publications = () => {
@@ -17,17 +17,19 @@ const Publications = () => {
     useEffect(() => {
         const fetchPublications = async () => {
             try {
-                const response = await axios.get('/publications');
-                const publicationsByYear = response.data.reduce((acc, pub) => {
-                    if (!acc[pub.year]) {
-                        acc[pub.year] = [];
-                    }
-                    acc[pub.year].push(pub);
-                    return acc;
-                }, {});
-                const sortedYears = Object.keys(publicationsByYear).sort((a, b) => b.localeCompare(a));
-                setSortedYears(sortedYears);
-                setPublications(publicationsByYear);
+                const response = await AllRoutes.fetchPublications();
+                if(response.success){
+                    const publicationsByYear = response.data.reduce((acc, pub) => {
+                        if (!acc[pub.year]) {
+                            acc[pub.year] = [];
+                        }
+                        acc[pub.year].push(pub);
+                        return acc;
+                    }, {});
+                    const sortedYears = Object.keys(publicationsByYear).sort((a, b) => b.localeCompare(a));
+                    setSortedYears(sortedYears);
+                    setPublications(publicationsByYear);
+                }
             } catch (error) {
                 console.error("Error fetching publications:", error);
             }

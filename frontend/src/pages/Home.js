@@ -12,7 +12,7 @@ import NIT from "../assets/NIT.png";
 import ScrollToTop from '../components/ScrollToTop';
 import { highlights } from "../data/constants";
 import { CalendarDays } from "lucide-react";
-import axios from '../api/axios';
+import { AllRoutes } from "../api/routes";
 
 const labImages = [
     lab1
@@ -162,8 +162,10 @@ const RecentNews = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await axios.get('news/');
-                setNews(response.data.filter(item => item.recent === true));
+                const response = await AllRoutes.fetchNews();
+                if(response.success){
+                    setNews(response.data.filter(item => item.recent === true));
+                }
             } catch (error) {
                 console.error("Error fetching news:", error);
             }

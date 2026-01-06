@@ -8,17 +8,12 @@ import Contact from "./pages/Contact";
 import Layout from "./Layout";
 import ResearchDetailPage from "./pages/ResearchDetailPage";
 import Opportunities from "./pages/Opportunities";
-import AdminRedirect from './pages/AdminRedirect';
 import WebTeam from "./pages/WebTeam";
 
 function App() {
   return (
     <Router >
       <Routes>
-        <Route
-          path="/admin"
-          element={<AdminRedirect />}
-        />
         <Route path="/" element={<Layout />} >
           <Route index element={<Home />} />
           <Route path="/news" element={<News />} />

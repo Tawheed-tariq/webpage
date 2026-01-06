@@ -6,7 +6,7 @@ import gmailIcon from '@iconify-icons/logos/google-gmail';
 import githubIcon from '@iconify-icons/logos/github-icon';
 import linkedinIcon from '@iconify-icons/logos/linkedin-icon';
 import noimage from '../assets/sonia.jpg';
-import axios from '../api/axios';
+import { AllRoutes } from '../api/routes';
 
 const WebTeamMemberCard = ({ 
     name = 'Team Member', 
@@ -178,9 +178,9 @@ const WebTeam = () => {
     useEffect(() => {
         const fetchTeamMembers = async () => {
             try {
-                const response = await axios.get('/web-team');
+                const response = await AllRoutes.fetchWebTeam();
                 
-                if (response.status === 200) {
+                if (response.success) {
                     setTeamMembers(response.data);
                 }
             } catch (err) {
